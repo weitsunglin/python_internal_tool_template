@@ -17,9 +17,28 @@ root.resizable(False, False)
 
 root.iconbitmap('icon.ico')
 
+# 使用 grid 方法來更精確地控制佈局
+root.grid_rowconfigure(0, weight=0)
+root.grid_rowconfigure(1, weight=1)
+root.grid_columnconfigure(0, weight=1)
+
+# 創建導航按鈕的 Frame
+nav_frame = tk.Frame(root)
+nav_frame.grid(row=0, column=0, sticky='ew', padx=20, pady=5)
+
+
+def open_about():
+    # 關於按鈕點擊事件
+    tk.messagebox.showinfo("關於", "這是關於頁面")
+
+
+
+about_button = tk.Button(nav_frame, text="關於", command=open_about)
+about_button.pack(side=tk.LEFT, padx=5)
+
 # 創建 Notebook 小部件
 notebook = ttk.Notebook(root)
-notebook.pack(fill=tk.BOTH, expand=True, padx=20, pady=20)
+notebook.grid(row=1, column=0, sticky='nsew', padx=20, pady=20)
 
 # 加載配置文件
 with open('config.json', 'r', encoding='utf-8') as f:
