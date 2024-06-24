@@ -1,7 +1,7 @@
 import tkinter as tk
 import requests
 
-def create_page3(page3):
+def create_page(page3):
     label3 = tk.Label(page3, text="這是第三頁")
     label3.pack(pady=10)
     

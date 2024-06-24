@@ -2,7 +2,7 @@
 import tkinter as tk
 from feature1 import print_log
 
-def create_page2(page2):
+def create_page(page2):
     log_text = tk.Text(page2, height=10, width=80)
     log_text.pack(fill=tk.BOTH, expand=True, padx=5, pady=5)
 

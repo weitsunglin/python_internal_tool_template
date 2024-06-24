@@ -2,7 +2,7 @@
 import tkinter as tk
 from tkinter import messagebox
 
-def create_page1(page1):
+def create_page(page1):
     label1 = tk.Label(page1, text="請輸入您的名字：")
     label1.grid(row=0, column=0, padx=5, pady=5, sticky=tk.W)
 

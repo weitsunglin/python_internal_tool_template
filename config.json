@@ -1,0 +1,7 @@
+{
+    "pages": [
+        {"name": "第一頁", "module": "page1"},
+        {"name": "第二頁", "module": "page2"},
+        {"name": "第三頁", "module": "page3"}
+    ]
+}

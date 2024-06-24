@@ -1,15 +1,13 @@
 # -*- coding: utf-8 -*-
 import tkinter as tk
-from tkinter import messagebox, ttk
+from tkinter import ttk
 import sys
 import os
+import importlib
+import json
 
 # 將 scripts 目錄添加到 sys.path 以便導入其他腳本
 sys.path.append(os.path.join(os.path.dirname(__file__), 'scripts'))
-
-from page1 import create_page1
-from page2 import create_page2
-from page3 import create_page3
 
 # 創建主應用程序窗口
 root = tk.Tk()
@@ -23,19 +21,18 @@ root.iconbitmap('icon.ico')
 notebook = ttk.Notebook(root)
 notebook.pack(fill=tk.BOTH, expand=True, padx=20, pady=20)
 
-# 創建第一個頁面
-page1 = ttk.Frame(notebook)
-notebook.add(page1, text="第一頁")
-create_page1(page1)
+# 加載配置文件
+with open('config.json', 'r', encoding='utf-8') as f:
+    config = json.load(f)
 
-# 創建第二個頁面
-page2 = ttk.Frame(notebook)
-notebook.add(page2, text="第二頁")
-create_page2(page2)
-
-# 創建第三個頁面
-page3 = ttk.Frame(notebook)
-notebook.add(page3, text="第三頁")
-create_page3(page3)
+# 動態加載頁面
+for page in config["pages"]:
+    module_name = page["module"]
+    page_name = page["name"]
+    
+    module = importlib.import_module(module_name)
+    page_frame = ttk.Frame(notebook)
+    notebook.add(page_frame, text=page_name)
+    module.create_page(page_frame)
 
 root.mainloop()
