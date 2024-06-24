@@ -1,0 +1,1 @@
+"F:\_project\python_internal_tool_template\Python-3.12.4\python.exe" -m pip install --upgrade pip
