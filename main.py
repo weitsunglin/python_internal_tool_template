@@ -8,6 +8,7 @@ import json
 
 # 將 scripts 目錄添加到 sys.path 以便導入其他腳本
 sys.path.append(os.path.join(os.path.dirname(__file__), 'scripts'))
+sys.path.append(os.path.join(os.path.dirname(__file__), 'pages'))
 
 # 創建主應用程序窗口
 root = tk.Tk()
