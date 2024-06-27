@@ -1,17 +1,18 @@
 # -*- coding: utf-8 -*-
 import tkinter as tk
-from tkinter import ttk
+from tkinter import ttk, messagebox
 import sys
 import os
 import importlib
 import json
+from tkinterdnd2 import TkinterDnD
 
 # 將 scripts 目錄添加到 sys.path 以便導入其他腳本
 sys.path.append(os.path.join(os.path.dirname(__file__), 'scripts'))
 sys.path.append(os.path.join(os.path.dirname(__file__), 'pages'))
 
 # 創建主應用程序窗口
-root = tk.Tk()
+root = TkinterDnD.Tk()
 root.title("基礎UI介面")
 root.geometry("800x600")
 root.resizable(False, False)
@@ -30,8 +31,7 @@ nav_frame.grid(row=0, column=0, sticky='ew', padx=20, pady=5)
 
 def open_about():
     # 關於按鈕點擊事件
-    tk.messagebox.showinfo("關於", "這是關於頁面")
-
+    messagebox.showinfo("關於", "這是關於頁面")
 
 
 about_button = tk.Button(nav_frame, text="關於", command=open_about)
@@ -54,5 +54,16 @@ for page in config["pages"]:
     page_frame = ttk.Frame(notebook)
     notebook.add(page_frame, text=page_name)
     module.create_page(page_frame)
+
+# 切換到 page2 的函數示例
+def switch_to_page2():
+    for i, page in enumerate(config["pages"]):
+        if page["module"] == "page2":
+            notebook.select(i)
+            break
+
+# 這裡可以放置其他頁面或邏輯
+# 如果需要在某個時刻切換到 page2，調用 switch_to_page2 函數即可
+# switch_to_page2()
 
 root.mainloop()
