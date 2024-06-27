@@ -18,6 +18,9 @@ if not exist "%python_dir%python-3.12.4" (
 :: Ensure paths are correctly formatted
 set "python_exe=%python_dir%\python-3.12.4\python.exe"
 
+:: Run pip_upgrade.bat to upgrade pip
+call "%current_dir%pip_upgrade.bat"
+
 :: Run the Python script
 if exist "%python_exe%" (
     "%python_exe%" "%current_dir%main.py"
